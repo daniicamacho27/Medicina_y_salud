@@ -7,7 +7,12 @@
 }
 
 body {
-  font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family:
+    "Poppins",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    sans-serif;
   background-color: var(--cream);
   color: var(--green-dark);
 }
