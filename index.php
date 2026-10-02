@@ -96,8 +96,8 @@ require_once 'includes/nav.php';
         <h2>Hablemos de tu salud.</h2>
         <p>Dejanos tu consulta y te orientamos hacia la sección o fuente de información que necesitás.</p>
         <div class="contacto-hours">
-          Lun a vie · 9 a 18 h<br>
-          medsalud@info.ar
+                    Lun a vie · 9 a 18 h<br>
+          <?= APP_EMAIL_CONTACTO; ?>
         </div>
       </div>
       <div class="col-lg-8 contacto-form-panel">
