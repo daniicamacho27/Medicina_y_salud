@@ -1,8 +1,8 @@
 :root {
   --cream: #f4f1ea;
   --green-dark: #16332c;
-  --terracotta: #d9603f;
   --text-muted: #6b6f68;
+  --terracota-text:#b34a2a; 
   --border: #e2ded3;
 }
 
@@ -41,7 +41,7 @@ a {
 .navbar-medsalud .navbar-brand .logo-dot {
   width: 22px;
   height: 22px;
-  background-color: var(--terracotta);
+  background-color: var(--terracotta-text);
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
@@ -62,7 +62,7 @@ a {
 
 .navbar-medsalud .nav-link.active,
 .navbar-medsalud .nav-link:hover {
-  color: var(--terracotta);
+  color: var(--terracotta-text);
 }
 
 /* --- Hero de sección --- */
@@ -76,7 +76,7 @@ a {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  color: var(--terracotta);
+  color: var(--terracotta-text);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -87,7 +87,7 @@ a {
 .hero-eyebrow .rule {
   width: 28px;
   height: 1px;
-  background-color: var(--terracotta);
+  background-color: var(--terracotta-text);
   display: inline-block;
 }
 
@@ -217,7 +217,7 @@ a {
 }
 
 .bienestar-eyebrow {
-  color: var(--terracotta);
+  color: var(--terracotta-text);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -249,7 +249,7 @@ a {
 }
 
 .contacto-eyebrow {
-  color: var(--terracotta);
+  color: var(--terracotta-text);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -298,7 +298,7 @@ a {
 
 .contacto-form-panel .form-control:focus {
   box-shadow: none;
-  border-bottom-color: var(--terracotta);
+  border-bottom-color: var(--terracotta-text);
 }
 
 /* --- Mapa del sitio --- */
@@ -308,7 +308,7 @@ a {
 }
 
 .mapa-eyebrow {
-  color: var(--terracotta);
+  color: var(--terracotta-text);
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.06em;
@@ -346,7 +346,7 @@ a {
 }
 
 .mapa-tile.highlight-terracotta {
-  background-color: var(--terracotta);
+  background-color: var(--terracotta-text);
   color: #fff;
 }
 
@@ -378,7 +378,7 @@ a:focus-visible,
 button:focus-visible,
 input:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid var(--terracotta);
+  outline: 2px solid var(--terracotta-text);
   outline-offset: 2px;
 }
 
