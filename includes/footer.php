@@ -1,37 +1,11 @@
-<?php
-$pagina_actual = basename($_SERVER['PHP_SELF']);
+<footer class="site-footer">
+  <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
+    <a class="navbar-brand mb-0" href="<?= $ruta_base; ?>index.php">MedSalud</a>
+    <span> Medicina y salud · Autora: Daniela Luz Belén Camacho</span>
+    <span>&copy; 2026</span>
+  </div>
+</footer>
 
-$menu = [
-    'index.php'                  => 'Inicio',
-    'medicina.php'               => 'Medicina',
-    'enfermedades.php'           => 'Enfermedades',
-    'sintomas.php'               => 'Síntomas',
-    'prevencion.php'             => 'Prevención',
-    'alimentacion-saludable.php' => 'Alimentación saludable',
-    'salud-mental.php'           => 'Salud mental',
-    'actividad-fisica.php'       => 'Actividad física',
-    'primeros-auxilios.php'      => 'Primeros auxilios',
-    'medicamentos.php'           => 'Medicamentos',
-    'consejos.php'               => 'Consejos',
-    'mapa-del-sitio.php'         => 'Mapa del sitio',
-    'clase5/contacto.php'        => 'Contacto',
-    'clase5/buscar.php'          => 'Buscar',
-];
-?>
-<header class="navbar-medsalud">
-  <nav class="navbar navbar-expand-lg container">
-    <a class="navbar-brand" href="<?= $ruta_base; ?>index.php"><span class="logo-dot">+</span> MedSalud</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain" aria-controls="navMain" aria-expanded="false" aria-label="Abrir menú">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-end" id="navMain">
-      <ul class="navbar-nav">
-        <?php foreach ($menu as $archivo => $texto): ?>
-          <li class="nav-item">
-            <a class="nav-link<?= basename($archivo) === $pagina_actual ? ' active' : ''; ?>" href="<?= $ruta_base . $archivo; ?>"><?= $texto; ?></a>
-          </li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-  </nav>
-</header>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

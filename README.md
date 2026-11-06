@@ -95,23 +95,11 @@ Recibe el parámetro `q` por **GET** (ej: `buscar.php?q=salud`) y busca en las s
 
 ### Capturas
 
-**Contacto con campos vacíos**
-![Contacto vacío](clase5/capturas/contacto-vacio.png)
+**Contacto**
+![Contacto vacío](clase5/contacto.php)
 
-**Correo inválido (se conservan los datos)**
-![Correo inválido](clase5/capturas/contacto-correo-invalido.png)
 
-**Intento de XSS escapado**
-![XSS contacto](clase5/capturas/contacto-xss.png)
+**Búsqueda**
+![Búsqueda vacía](clase5/buscar.php)
 
-**Envío exitoso**
-![Contacto exitoso](clase5/capturas/contacto-exito.png)
 
-**Búsqueda con resultados (`?q=salud`)**
-![Búsqueda](clase5/capturas/buscar-resultados.png)
-
-**Búsqueda vacía**
-![Búsqueda vacía](clase5/capturas/buscar-vacio.png)
-
-**Búsqueda con XSS escapado**
-![XSS búsqueda](clase5/capturas/buscar-xss.png)
