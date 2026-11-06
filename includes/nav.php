@@ -28,7 +28,8 @@ $menu = [
       <ul class="navbar-nav">
         <?php foreach ($menu as $archivo => $texto): ?>
           <li class="nav-item">
-            <a class="nav-link<?= basename($archivo) === $pagina_actual ? ' active' : ''; ?>"
+            <a class="nav-link<?= basename($archivo) === $pagina_actual ? ' active' : ''; ?>" href="<?= $ruta_base . $archivo; ?>"><?= $texto; ?></a>
+          </li>
         <?php endforeach; ?>
       </ul>
     </div>
