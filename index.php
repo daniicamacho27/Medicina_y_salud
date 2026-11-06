@@ -101,25 +101,22 @@ require_once 'includes/nav.php';
         </div>
       </div>
       <div class="col-lg-8 contacto-form-panel">
-        <form>
+        <form method="post" action="clase5/contacto.php" novalidate>
           <div class="row g-4">
             <div class="col-md-6">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
+              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu nombre">
             </div>
-            <div class="col-md-6">
-              <label for="correo" class="form-label">Correo</label>
-              <input type="email" class="form-control" id="correo" placeholder="nombre@email.com" required>
-            </div>
-            <div class="col-12">
-              <label for="mensaje" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="mensaje" rows="2" placeholder="¿En qué podemos ayudarte?" required></textarea>
-            </div>
-            <div class="col-12">
-              <button type="submit" class="btn-medsalud">Enviar consulta</button>
-            </div>
+          <div class="col-md-6">
+            <label for="correo" class="form-label">Correo</label>
+            <input type="text" class="form-control" id="correo" name="correo" placeholder="nombre@email.com">
           </div>
-        </form>
+        </div>
+        <div class="col-12">
+          <label for="mensaje" class="form-label">Mensaje</label>
+          <textarea class="form-control" id="mensaje" name="mensaje" rows="2" placeholder="¿En qué podemos ayudarte?"></textarea>
+        </div>
+        
       </div>
     </div>
   </section>

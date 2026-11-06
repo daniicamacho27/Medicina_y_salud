@@ -14,6 +14,8 @@ $menu = [
     'medicamentos.php'           => 'Medicamentos',
     'consejos.php'               => 'Consejos',
     'mapa-del-sitio.php'         => 'Mapa del sitio',
+    'clase5/contacto.php'        => 'Contacto',
+    'clase5/buscar.php'          => 'Buscar',
 ];
 ?>
 <header class="navbar-medsalud">
@@ -26,8 +28,7 @@ $menu = [
       <ul class="navbar-nav">
         <?php foreach ($menu as $archivo => $texto): ?>
           <li class="nav-item">
-            <a class="nav-link<?= $archivo === $pagina_actual ? ' active' : ''; ?>" href="<?= $ruta_base . $archivo; ?>"><?= $texto; ?></a>
-          </li>
+            <a class="nav-link<?= basename($archivo) === $pagina_actual ? ' active' : ''; ?>"
         <?php endforeach; ?>
       </ul>
     </div>
