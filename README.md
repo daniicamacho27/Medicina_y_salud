@@ -66,3 +66,52 @@ Daniela Luz Belén Camacho
 ## Materia / Proyecto
 Programacion Web
 Medicina y Salud
+
+## Clase 5 — Procesamiento de Formularios y Seguridad Web
+
+Todo el desarrollo de esta entrega está en la carpeta [`clase5/`](clase5/).
+
+### Formulario POST — Contacto (`clase5/contacto.php`)
+Recibe `nombre`, `correo` y `mensaje` por **POST**. También se puede enviar desde el formulario de la página de inicio (`index.php`), que apunta a este mismo archivo.
+
+- **Sanitización:** `filter_input(INPUT_POST, ...)` + `trim()`; toda salida se escapa con `e()` (`htmlspecialchars` con `ENT_QUOTES` y `UTF-8`) para evitar XSS.
+- **Validación en servidor:** campos obligatorios; nombre de 2 a 60 caracteres; correo con `filter_var(FILTER_VALIDATE_EMAIL)`; mensaje de al menos 10 caracteres.
+- **Mensajes:** alerta verde si el envío es correcto; alerta roja con la lista de errores y mensaje debajo de cada campo (`is-invalid` de Bootstrap).
+- **Persistencia:** si hay errores, los campos conservan lo que se escribió.
+
+### Formulario GET — Buscador (`clase5/buscar.php`)
+Recibe el parámetro `q` por **GET** (ej: `buscar.php?q=salud`) y busca en las secciones del sitio con `mb_stripos`.
+
+- **Sanitización:** `filter_input(INPUT_GET, ...)` + `trim()` y escape con `e()`.
+- **Validación:** término no vacío y de al menos 2 caracteres.
+- **Mensajes:** resultados encontrados, "sin resultados" o error de validación. El término se conserva en el campo.
+
+### Archivos
+| Archivo | Función |
+|---|---|
+| `clase5/funciones.php` | Función `e()` para escapar la salida |
+| `clase5/contacto.php` | Formulario POST |
+| `clase5/buscar.php` | Formulario GET |
+
+### Capturas
+
+**Contacto con campos vacíos**
+![Contacto vacío](clase5/capturas/contacto-vacio.png)
+
+**Correo inválido (se conservan los datos)**
+![Correo inválido](clase5/capturas/contacto-correo-invalido.png)
+
+**Intento de XSS escapado**
+![XSS contacto](clase5/capturas/contacto-xss.png)
+
+**Envío exitoso**
+![Contacto exitoso](clase5/capturas/contacto-exito.png)
+
+**Búsqueda con resultados (`?q=salud`)**
+![Búsqueda](clase5/capturas/buscar-resultados.png)
+
+**Búsqueda vacía**
+![Búsqueda vacía](clase5/capturas/buscar-vacio.png)
+
+**Búsqueda con XSS escapado**
+![XSS búsqueda](clase5/capturas/buscar-xss.png)
