@@ -95,12 +95,9 @@ Recibe el parámetro `q` por **GET** (ej: `buscar.php?q=salud`) y busca en las s
 
 ### Capturas
 
-**Contacto**
-![Contacto vacío](clase5/capturas/contacto.php)
+![Contacto vacío](clase5/capturas/contacto.png)
 
-
-**Búsqueda**
-![Búsqueda vacía](clase5/capturas/buscar.php)
+![Búsqueda vacía](clase5/capturas/buscar.png)
 
 
 ## TP N° 6 — Esquema relacional en MySQL
