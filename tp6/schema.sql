@@ -119,3 +119,13 @@ CREATE TABLE IF NOT EXISTS consultas (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario)
     ON UPDATE CASCADE ON DELETE SET NULL
 ) ENGINE=InnoDB;
+
+
+-- ---------------------------------------------------------------------
+-- 6) ÍNDICES DE RENDIMIENTO
+-- ---------------------------------------------------------------------
+-- Filtrado frecuente: listar artículos publicados de una categoría
+CREATE INDEX idx_articulos_categoria_estado ON articulos (id_categoria, id_estado);
+
+-- Bandeja de consultas: buscar por estado de lectura y fecha
+CREATE INDEX idx_consultas_leida_fecha ON consultas (leida, created_at);
