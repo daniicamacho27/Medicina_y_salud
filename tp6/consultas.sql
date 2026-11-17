@@ -79,3 +79,22 @@ FROM articulos a
 INNER JOIN articulo_etiqueta ae ON ae.id_articulo = a.id_articulo
 INNER JOIN etiquetas t          ON t.id_etiqueta  = ae.id_etiqueta
 ORDER BY a.titulo, t.nombre;
+
+
+-- =====================================================================
+-- UPDATE
+-- =====================================================================
+
+-- Publicar el borrador (cambia el estado y la fecha del artículo 2)
+UPDATE articulos
+SET id_estado = 2,
+    fecha_publicacion = '2026-11-17'
+WHERE id_articulo = 2;
+
+-- =====================================================================
+-- DELETE
+-- =====================================================================
+
+-- Dar de baja la consulta de prueba
+DELETE FROM consultas
+WHERE id_consulta = 1;
