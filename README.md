@@ -103,3 +103,27 @@ Recibe el parámetro `q` por **GET** (ej: `buscar.php?q=salud`) y busca en las s
 ![Búsqueda vacía](clase5/capturas/buscar.php)
 
 
+## TP N° 6 — Esquema relacional en MySQL
+
+Los archivos están en la carpeta [`tp6/`](tp6/):
+
+- [`NORMALIZACION.md`](tp6/NORMALIZACION.md): normalización (1FN, 2FN, 3FN) y listado de tablas.
+- [`schema.sql`](tp6/schema.sql): crea la base `medsalud` con sus tablas, claves e índices.
+- [`consultas.sql`](tp6/consultas.sql): pruebas CRUD (INSERT, SELECT con JOIN, UPDATE, DELETE).
+
+### Cómo probarlo en XAMPP
+Con MySQL iniciado en el panel de XAMPP, desde la carpeta del proyecto:
+
+```powershell
+C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 -e "source tp6/schema.sql"
+C:\xampp\mysql\bin\mysql.exe -u root --default-character-set=utf8mb4 -t -e "source tp6/consultas.sql"
+```
+
+También se pueden importar desde phpMyAdmin: primero `schema.sql` y después `consultas.sql`.
+
+### Evidencia de funcionamiento
+
+## Tablas
+![Resultado de consultas.sql](tp6/capturas/tablas.png)
+
+![Diseñador de relacione](tp6/capturas/diseñador.png)
