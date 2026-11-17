@@ -121,6 +121,9 @@ También se pueden importar desde phpMyAdmin: primero `schema.sql` y después `c
 ### Evidencia de funcionamiento
 
 ## Tablas
-![Resultado de consultas.sql](tp6/capturas/tablas.png)
+![Resultado de schemas.sql](tp6/capturas/schemas.png)
+
+![Resultado de consultas.sql](tp6/capturas/consultas.png)
 
 ![Diseñador de relacione](tp6/capturas/diseñador.png)
+
