@@ -50,3 +50,32 @@ INSERT INTO articulo_etiqueta (id_articulo, id_etiqueta) VALUES
 INSERT INTO consultas (id_usuario, nombre, email, asunto, mensaje) VALUES
   (NULL, 'Carlos Pérez', 'carlos@correo.com', 'Duda sobre alimentación',
    'Hola, ¿tienen información sobre dietas para hipertensos?');
+
+
+-- =====================================================================
+-- READ
+-- =====================================================================
+
+-- SELECT con WHERE + ORDER BY: artículos publicados, del más nuevo al más viejo
+SELECT id_articulo, titulo, fecha_publicacion
+FROM articulos
+WHERE id_estado = 2
+ORDER BY fecha_publicacion DESC;
+
+-- INNER JOIN: artículo + autor + categoría + estado
+SELECT a.titulo,
+       CONCAT(u.nombre, ' ', u.apellido) AS autor,
+       c.nombre AS categoria,
+       e.nombre AS estado
+FROM articulos a
+INNER JOIN usuarios u         ON u.id_usuario   = a.id_usuario
+INNER JOIN categorias c       ON c.id_categoria = a.id_categoria
+INNER JOIN estados_articulo e ON e.id_estado    = a.id_estado
+ORDER BY a.titulo;
+
+-- INNER JOIN N:M: etiquetas de cada artículo
+SELECT a.titulo, t.nombre AS etiqueta
+FROM articulos a
+INNER JOIN articulo_etiqueta ae ON ae.id_articulo = a.id_articulo
+INNER JOIN etiquetas t          ON t.id_etiqueta  = ae.id_etiqueta
+ORDER BY a.titulo, t.nombre;
