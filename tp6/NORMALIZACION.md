@@ -1,6 +1,16 @@
 # TP N° 6 – Normalización y esquema relacional (MedSalud)
 
 **Proyecto:** Medicina y Salud (MedSalud) · **Materia:** Programación Web · **Docente:** Lic. Gabriel Artaza
+## TP N° 6 – Esquema relacional en MySQL
+
+Los archivos están en la carpeta `tp6/`:
+
+- `NORMALIZACION.md`: normalización (1FN, 2FN, 3FN) y listado de tablas.
+- `schema.sql`: crea la base `medsalud` con sus tablas, claves e índices.
+- `consultas.sql`: pruebas CRUD (INSERT, SELECT con JOIN, UPDATE, DELETE).
+
+Cómo probarlo en XAMPP/Laragon: abrir phpMyAdmin, importar primero `schema.sql` y luego `consultas.sql`.
+
 **Autora:** Daniela Luz Belén Camacho
 
 ## Parte 1 – Normalización aplicada al proyecto
