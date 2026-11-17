@@ -54,3 +54,30 @@ Quedan **dependencias transitivas** (un atributo no-clave depende de otro no-cla
 - `etiqueta` se repite como texto → tabla `etiquetas`, y `articulo_etiqueta` pasa a guardar solo las claves foráneas.
 
 Además se agrega la tabla `consultas` para el formulario de contacto del sitio (sección 12 del mockup).
+
+
+### 3. Listado de tablas resultante
+
+| Tabla | PK | FK | Descripción |
+|---|---|---|---|
+| `roles` | `id_rol` | – | Roles de usuario (admin, editor) |
+| `categorias` | `id_categoria` | – | Secciones del sitio |
+| `estados_articulo` | `id_estado` | – | borrador, publicado, archivado |
+| `etiquetas` | `id_etiqueta` | – | Palabras clave reutilizables |
+| `usuarios` | `id_usuario` | `id_rol` → `roles` | Autenticación y datos personales |
+| `articulos` | `id_articulo` | `id_usuario` → `usuarios`, `id_categoria` → `categorias`, `id_estado` → `estados_articulo` | Tabla principal de negocio |
+| `articulo_etiqueta` | `(id_articulo, id_etiqueta)` | `id_articulo` → `articulos`, `id_etiqueta` → `etiquetas` | Relación N:M |
+| `consultas` | `id_consulta` | `id_usuario` → `usuarios` (opcional) | Mensajes del formulario de contacto |
+
+### Diagrama de relaciones
+
+```mermaid
+erDiagram
+    roles ||--o{ usuarios : "tiene"
+    usuarios ||--o{ articulos : "escribe"
+    categorias ||--o{ articulos : "clasifica"
+    estados_articulo ||--o{ articulos : "define estado"
+    articulos ||--o{ articulo_etiqueta : ""
+    etiquetas ||--o{ articulo_etiqueta : ""
+    usuarios |o--o{ consultas : "envía"
+```
