@@ -127,3 +127,39 @@ También se pueden importar desde phpMyAdmin: primero `schema.sql` y después `c
 
 ![Diseñador de relacione](tp6/capturas/diseñador.png)
 
+
+## TP N° 7 — Persistencia y conexión PHP-MySQL segura
+
+Módulo CRUD de artículos integrado al sitio. Se accede desde el enlace **Administración** del footer o en `http://localhost/medicina-salud/admin/index.php`.
+
+| Archivo | Función |
+|---|---|
+| `config/conexion.php` | Conexión PDO con `try-catch (PDOException)` |
+| `admin/index.php` | Listado con INNER JOIN (Read) |
+| `admin/crear.php` | Formulario e inserción (Create) |
+| `admin/editar.php` | Formulario y actualización (Update) |
+| `admin/eliminar.php` | Baja de registros por POST (Delete) |
+| `admin/_datos.php`, `admin/_form.php` | Validación y formulario compartidos |
+
+### Seguridad aplicada
+- **Consultas preparadas** con `:parametros` en todas las operaciones (PDO, `EMULATE_PREPARES` desactivado).
+- **Protección XSS:** toda salida se escapa con `e()` (`htmlspecialchars`).
+- **Validación en el servidor** de campos y de las claves foráneas (autor, categoría y estado).
+- La baja se hace por **POST** con confirmación, no por un enlace GET.
+
+### Evidencia de funcionamiento
+**Listado de artículos**
+![Listado](tp7/capturas/listado.png)
+
+**Alta con validación**
+![Crear](tp7/capturas/crear.png)
+
+**Edición**
+![Editar](tp7/capturas/editar.png)
+
+**Mensaje de éxito**
+![Éxito](tp7/capturas/mensaje-exito.png)
+
+**Datos en phpMyAdmin**
+![phpMyAdmin](tp7/capturas/phpmyadmin.png)
+
