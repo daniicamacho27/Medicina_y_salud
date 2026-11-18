@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/_guard.php';
 // UPDATE: carga el registro, muestra el formulario y actualiza
 $ruta_base = '../';
 $titulo_pagina = 'Editar artículo';

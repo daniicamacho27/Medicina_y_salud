@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/_guard.php';
 // CREATE: formulario + inserción
 $ruta_base = '../';
 $titulo_pagina = 'Nuevo artículo';

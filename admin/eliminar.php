@@ -1,4 +1,5 @@
 <?php
+require_once __DIR__ . '/_guard.php';
 // DELETE: solo acepta POST (un enlace GET no debería borrar datos)
 require_once __DIR__ . '/../config/conexion.php';
 
