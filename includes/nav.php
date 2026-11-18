@@ -31,6 +31,16 @@ $menu = [
             <a class="nav-link<?= basename($archivo) === $pagina_actual ? ' active' : ''; ?>" href="<?= $ruta_base . $archivo; ?>"><?= $texto; ?></a>
           </li>
         <?php endforeach; ?>
+        <?php if (isset($_SESSION['usuario_id'])): ?>
+          <li class="nav-item"><a class="nav-link" href="<?= $ruta_base ?>dashboard.php">Hola, <?= htmlspecialchars($_SESSION['usuario_nombre'], ENT_QUOTES, 'UTF-8') ?></a></li>
+        <?php if (($_SESSION['rol'] ?? '') === 'admin'): ?>
+          <li class="nav-item"><a class="nav-link" href="<?= $ruta_base ?>admin_panel.php">Admin</a></li>
+        <?php endif; ?>
+          <li class="nav-item"><a class="nav-link" href="<?= $ruta_base ?>logout.php">Salir</a></li>
+        <?php else: ?>
+          <li class="nav-item"><a class="nav-link" href="<?= $ruta_base ?>login.php">Ingresar</a></li>
+          <li class="nav-item"><a class="nav-link" href="<?= $ruta_base ?>registro.php">Crear cuenta</a></li>
+        <?php endif; ?>
       </ul>
     </div>
   </nav>
