@@ -60,8 +60,6 @@ Las imágenes de las 12 secciones del mockup se encuentran en la carpeta `captur
 
 Daniela Luz Belén Camacho
 
-## Autor/es
-Daniela Luz Belén Camacho
 
 ## Materia / Proyecto
 Programacion Web
@@ -162,4 +160,7 @@ Módulo CRUD de artículos integrado al sitio. Se accede desde el enlace **Admin
 
 **Datos en phpMyAdmin**
 ![phpMyAdmin](tp7/capturas/phpmyadmin.png)
+
+**Eliminación con confirmación**
+![Eliminar](tp7/capturas/eliminar.png)
 
