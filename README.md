@@ -205,27 +205,37 @@ Módulo de registro, inicio y cierre de sesión con sesiones PHP, conectado a My
 ### Evidencia de funcionamiento
 
 **Acceso denegado sin sesión (redirección a `login.php?error=acceso_denegado`)**
+
 ![Acceso denegado](tp8/capturas/acceso-denegado.png)
 
 **Registro con validación (email duplicado)**
+
 ![Registro](tp8/capturas/registro.png)
 
 **Contraseña hasheada en phpMyAdmin**
+
 ![Hash en phpMyAdmin](tp8/capturas/phpmyadmin-hash.png)
 
 **Dashboard de un usuario autenticado**
+
 ![Dashboard](tp8/capturas/dashboard-usuario.png)
 
 **Error 403 para un usuario sin rol admin**
+
 ![403](tp8/capturas/403.png)
 
 **Panel de administración (rol admin)**
+
 ![Panel admin](tp8/capturas/admin-panel.png)
 
 **Cookie de sesión antes y después del login (el ID cambia y es HttpOnly)**
+
 ![Cookie antes](tp8/capturas/cookie-antes.png)
+
+
 ![Cookie después](tp8/capturas/cookie-despues.png)
 
 **Cierre de sesión**
+
 ![Logout](tp8/capturas/logout.png)
 
