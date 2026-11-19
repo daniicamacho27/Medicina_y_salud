@@ -168,16 +168,6 @@ Módulo CRUD de artículos integrado al sitio. Se accede desde el enlace **Admin
 
 Módulo de registro, inicio y cierre de sesión con sesiones PHP, conectado a MySQL, con protección de rutas y control de acceso por roles.
 
-### Cómo probarlo en XAMPP
-
-1. Iniciar **Apache** y **MySQL** desde XAMPP.
-2. En phpMyAdmin, seleccionar la base `medsalud` y ejecutar `tp8/auth.sql` (agrega el rol `usuario`).
-3. Abrir `http://localhost/medicina-salud/registro.php` y crear una cuenta.
-4. Iniciar sesión en `http://localhost/medicina-salud/login.php`.
-5. Para probar el rol administrador, promover el usuario desde phpMyAdmin y volver a iniciar sesión:
-```sql
-UPDATE usuarios SET id_rol = (SELECT id_rol FROM roles WHERE nombre = 'admin') WHERE email = 'correo@ejemplo.com';
-```
 
 ### Archivos
 
@@ -200,13 +190,6 @@ UPDATE usuarios SET id_rol = (SELECT id_rol FROM roles WHERE nombre = 'admin') W
 3. **Guardián (`auth_guard.php`):** si no existe `$_SESSION['usuario_id']`, redirige a `login.php?error=acceso_denegado`. Con `exigir_rol('admin')` responde **403** si el rol no coincide.
 4. **Logout:** vacía la sesión, elimina la cookie `PHPSESSID` y destruye la sesión.
 
-### Rutas protegidas
-
-| Ruta | Quién accede |
-|---|---|
-| `dashboard.php` | Cualquier usuario autenticado |
-| `admin_panel.php` | Solo `admin` |
-| `admin/` (alta, edición y baja de artículos) | Solo `admin` |
 
 ### Seguridad aplicada
 
@@ -218,10 +201,6 @@ UPDATE usuarios SET id_rol = (SELECT id_rol FROM roles WHERE nombre = 'admin') W
 - Mensaje de error genérico en el login (no revela si el email existe).
 - Límite de 72 caracteres en la contraseña, que es lo que procesa bcrypt.
 - Control de acceso por rol en el servidor, no solo ocultando enlaces del menú.
-
-### Nota sobre la tabla `usuarios`
-
-El rol se guarda de forma normalizada (`id_rol` → tabla `roles`), según el esquema del TP6, en lugar de un campo `VARCHAR`. Al iniciar sesión se consulta el nombre del rol con un `INNER JOIN` y ese valor se guarda en `$_SESSION['rol']`. Los campos `email` (UNIQUE), `password` (VARCHAR 255) y `created_at` ya estaban en la tabla.
 
 ### Evidencia de funcionamiento
 
