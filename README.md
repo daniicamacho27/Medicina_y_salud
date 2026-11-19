@@ -164,3 +164,89 @@ Módulo CRUD de artículos integrado al sitio. Se accede desde el enlace **Admin
 **Eliminación con confirmación**
 ![Eliminar](tp7/capturas/eliminar.png)
 
+## TP N° 8 — Manejo de estado, sesiones y autenticación
+
+Módulo de registro, inicio y cierre de sesión con sesiones PHP, conectado a MySQL, con protección de rutas y control de acceso por roles.
+
+### Cómo probarlo en XAMPP
+
+1. Iniciar **Apache** y **MySQL** desde XAMPP.
+2. En phpMyAdmin, seleccionar la base `medsalud` y ejecutar `tp8/auth.sql` (agrega el rol `usuario`).
+3. Abrir `http://localhost/medicina-salud/registro.php` y crear una cuenta.
+4. Iniciar sesión en `http://localhost/medicina-salud/login.php`.
+5. Para probar el rol administrador, promover el usuario desde phpMyAdmin y volver a iniciar sesión:
+```sql
+UPDATE usuarios SET id_rol = (SELECT id_rol FROM roles WHERE nombre = 'admin') WHERE email = 'correo@ejemplo.com';
+```
+
+### Archivos
+
+| Archivo | Función |
+|---|---|
+| `registro.php` | Alta de usuarios con validación y contraseña hasheada |
+| `login.php` | Validación de credenciales y creación de la sesión |
+| `logout.php` | Cierre de sesión y borrado de la cookie |
+| `dashboard.php` | Vista protegida para cualquier usuario autenticado |
+| `admin_panel.php` | Vista protegida solo para el rol `admin` |
+| `includes/sesion.php` | Inicio de sesión con cookie segura |
+| `includes/auth_guard.php` | Guardián de rutas y función `exigir_rol()` |
+| `admin/_guard.php` | Protege el CRUD de artículos del TP7 (solo `admin`) |
+| `tp8/auth.sql` | Agrega el rol `usuario` a la tabla `roles` |
+
+### Flujo de autenticación
+
+1. **Registro:** se validan los datos, se verifica que el email no exista y se guarda el hash de la contraseña con rol `usuario`.
+2. **Login:** se busca al usuario por email, se compara con `password_verify()`, se regenera el ID de sesión y se guardan `usuario_id`, `usuario_nombre` y `rol` en `$_SESSION`.
+3. **Guardián (`auth_guard.php`):** si no existe `$_SESSION['usuario_id']`, redirige a `login.php?error=acceso_denegado`. Con `exigir_rol('admin')` responde **403** si el rol no coincide.
+4. **Logout:** vacía la sesión, elimina la cookie `PHPSESSID` y destruye la sesión.
+
+### Rutas protegidas
+
+| Ruta | Quién accede |
+|---|---|
+| `dashboard.php` | Cualquier usuario autenticado |
+| `admin_panel.php` | Solo `admin` |
+| `admin/` (alta, edición y baja de artículos) | Solo `admin` |
+
+### Seguridad aplicada
+
+- Contraseñas con `password_hash($password, PASSWORD_BCRYPT)` y verificación con `password_verify()` (nunca se guarda texto plano).
+- Consultas preparadas con PDO en todo el módulo (previene inyección SQL).
+- Validación de entradas en el servidor y salida escapada con `htmlspecialchars` (previene XSS).
+- `session_regenerate_id(true)` al iniciar sesión (previene *session fixation*).
+- Cookie de sesión con `HttpOnly` y `SameSite=Lax`. La marca `Secure` se activa automáticamente cuando el sitio se sirve por HTTPS (en `localhost` con HTTP queda desactivada).
+- Mensaje de error genérico en el login (no revela si el email existe).
+- Límite de 72 caracteres en la contraseña, que es lo que procesa bcrypt.
+- Control de acceso por rol en el servidor, no solo ocultando enlaces del menú.
+
+### Nota sobre la tabla `usuarios`
+
+El rol se guarda de forma normalizada (`id_rol` → tabla `roles`), según el esquema del TP6, en lugar de un campo `VARCHAR`. Al iniciar sesión se consulta el nombre del rol con un `INNER JOIN` y ese valor se guarda en `$_SESSION['rol']`. Los campos `email` (UNIQUE), `password` (VARCHAR 255) y `created_at` ya estaban en la tabla.
+
+### Evidencia de funcionamiento
+
+**Acceso denegado sin sesión (redirección a `login.php?error=acceso_denegado`)**
+![Acceso denegado](tp8/capturas/acceso-denegado.png)
+
+**Registro con validación (email duplicado)**
+![Registro](tp8/capturas/registro.png)
+
+**Contraseña hasheada en phpMyAdmin**
+![Hash en phpMyAdmin](tp8/capturas/phpmyadmin-hash.png)
+
+**Dashboard de un usuario autenticado**
+![Dashboard](tp8/capturas/dashboard-usuario.png)
+
+**Error 403 para un usuario sin rol admin**
+![403](tp8/capturas/403.png)
+
+**Panel de administración (rol admin)**
+![Panel admin](tp8/capturas/admin-panel.png)
+
+**Cookie de sesión antes y después del login (el ID cambia y es HttpOnly)**
+![Cookie antes](tp8/capturas/cookie-antes.png)
+![Cookie después](tp8/capturas/cookie-despues.png)
+
+**Cierre de sesión**
+![Logout](tp8/capturas/logout.png)
+
