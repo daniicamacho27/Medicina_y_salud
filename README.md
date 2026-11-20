@@ -312,9 +312,13 @@ Se refactorizó el CRUD de artículos en `app/` y se accede por `articulos.php?a
 | `articulos.php` | Front controller |
 
 ![Estructura](tp10/capturas/A1-estructura.png)
+
 ![Listado](tp10/capturas/A2-listado.png)
+
 ![Validación](tp10/capturas/A3-crear.png)
+
 ![Éxito](tp10/capturas/A4-exito.png)
+
 
 ### Parte B: módulo en Laravel
 
@@ -330,5 +334,7 @@ Proyecto en `laravel-medsalud/`, conectado a la misma base `medsalud`. Módulo d
 Para ejecutarlo: `cd laravel-medsalud`, `composer install`, copiar `.env.example` como `.env`, completar los datos de la base, `php artisan key:generate` y `php artisan serve`. Después, abrir `http://127.0.0.1:8000/articulos`.
 
 ![Estructura Laravel](tp10/capturas/B1-estructura.png)
+
 ![Rutas](tp10/capturas/B2-rutas.png)
+
 ![Módulo](tp10/capturas/B3-modulo.png)

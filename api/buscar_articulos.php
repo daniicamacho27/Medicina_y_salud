@@ -41,8 +41,7 @@ try {
     if ($q !== '') {
         // Se escapan % y _ para que se busquen como texto literal
         $like = '%' . addcslashes($q, '%_\\') . '%';
-        $sql .= " AND (a.titulo LIKE :q1 OR a.resumen LIKE :q2)";
-        $params[':q1'] = $like;
+        $sql .= " AND (LOWER(a.titulo) LIKE LOWER(:q1) OR LOWER(a.resumen) LIKE LOWER(:q2))";
         $params[':q2'] = $like;
     }
     if ($categoria !== '') {
@@ -50,7 +49,7 @@ try {
         $params[':cat'] = (int) $categoria;
     }
 
-    $sql .= " ORDER BY a.fecha_publicacion DESC, a.id_articulo DESC LIMIT 20";
+    $sql .= " ORDER BY (a.fecha_publicacion IS NULL), a.fecha_publicacion DESC, a.id_articulo DESC LIMIT 20";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute($params);

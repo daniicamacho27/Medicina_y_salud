@@ -1,6 +1,12 @@
 <?php
 require_once __DIR__ . '/sesion.php';
-require_once __DIR__ . '/../config/env.php';
+if (is_file(__DIR__ . '/../config/env.php')) {
+    require_once __DIR__ . '/../config/env.php';
+} else { // despliegues sin env.php (Vercel): valores por defecto
+    defined('APP_NOMBRE') || define('APP_NOMBRE', 'MedSalud');
+    defined('APP_EMAIL_CONTACTO') || define('APP_EMAIL_CONTACTO', 'medsalud@info.ar');
+    defined('APP_ENV') || define('APP_ENV', 'production');
+}
 $ruta_base = $ruta_base ?? '';
 ?>
 <!DOCTYPE html>

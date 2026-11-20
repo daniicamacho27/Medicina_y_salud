@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header('Location: login.php?registro=ok');
             exit;
         } catch (PDOException $ex) {
-            if ($ex->getCode() === '23000') {          // UNIQUE: se registró en paralelo
+            if (in_array((string) $ex->getCode(), ['23000', '23505'], true)) {
                 $errores['email'] = 'Ese email ya está registrado.';
             } else {
                 error_log('Registro: ' . $ex->getMessage());

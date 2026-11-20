@@ -1,24 +1,13 @@
 <?php
-// Conexión PDO a la base "medsalud" (TP6). Se incluye con require_once.
-$host    = getenv('DB_HOST') ?: 'localhost';
-$db      = getenv('DB_NAME') ?: 'medsalud';
-$user    = getenv('DB_USER') ?: 'root';
-$pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
-$charset = 'utf8mb4';
-
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
+// Conexión PDO. Se incluye con require_once y deja disponible $pdo.
+// La lógica (Postgres en Vercel / MySQL local) está en config/medsalud_pdo.php.
+require_once __DIR__ . '/medsalud_pdo.php';
 
 try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (PDOException $e) {
+    $pdo = medsalud_pdo();
+} catch (Throwable $e) {
     // El detalle técnico va al log, no a la pantalla del visitante.
     error_log('Error de conexión: ' . $e->getMessage());
     http_response_code(500);
-    die('No se pudo conectar con la base de datos. Verificá que MySQL esté iniciado.');
+    die('No se pudo conectar con la base de datos.');
 }
