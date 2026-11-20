@@ -11,6 +11,7 @@ class ArticuloController extends Controller
     {
         $articulos = Articulo::with(['categoria', 'estado'])
             ->whereHas('estado', fn ($q) => $q->where('nombre', 'publicado'))
+            ->orderByRaw('(fecha_publicacion IS NULL)')
             ->orderByDesc('fecha_publicacion')
             ->get();
 
