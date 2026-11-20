@@ -241,3 +241,53 @@ Módulo de registro, inicio y cierre de sesión con sesiones PHP, conectado a My
 
 ![Logout](tp8/capturas/logout.png)
 
+## TP N° 9 — Comunicación asincrónica y APIs (AJAX & JSON)
+
+Buscador de artículos en vivo: consulta a la base de datos con **Fetch API** y actualiza solo la lista de resultados, sin recargar la página. Se accede desde el menú **Buscador en vivo** o en `http://localhost/medicina-salud/buscador.php`.
+
+### Archivos
+
+| Archivo | Función |
+|---|---|
+| `api/buscar_articulos.php` | Endpoint PHP que responde JSON (PDO + consultas preparadas) |
+| `js/buscador.js` | Fetch API, `async/await`, `try...catch` y renderizado del DOM |
+| `buscador.php` | Página con el buscador y el filtro por categoría |
+| `tp9/datos-demo.sql` | Artículos publicados de ejemplo para probar |
+
+### Endpoint
+
+`GET api/buscar_articulos.php?q=texto&categoria=1`
+
+| Código | Cuándo |
+|---|---|
+| 200 | Búsqueda correcta (`{status, total, data}`) |
+| 400 | `q` de más de 100 caracteres o `categoria` no numérica |
+| 404 | Hay filtros y no hay coincidencias |
+| 405 | Método distinto de GET |
+| 500 | Error de base de datos (el detalle va al log) |
+
+### Seguridad y buenas prácticas
+- Consultas preparadas; los comodines `%` y `_` del usuario se escapan.
+- Solo se devuelven artículos con estado `publicado`.
+- En el DOM los datos se escapan antes de insertarse (previene XSS).
+- *Debounce* de 300 ms y cancelación de la petición anterior con `AbortController`.
+
+### Evidencia de funcionamiento
+**Listado inicial cargado por Fetch**
+![Inicial](tp9/capturas/inicial.png)
+
+**Búsqueda en vivo (sin recarga)**
+![Busqueda](tp9/capturas/busqueda.png)
+
+**Filtro por categoría**
+![Categoria](tp9/capturas/categoria.png)
+
+**Sin resultados (HTTP 404)**
+![Sin resultados](tp9/capturas/sin-resultados.png)
+
+**Respuesta JSON del endpoint**
+![JSON](tp9/capturas/json.png)
+
+**Pestaña Network (petición fetch, estado 200)**
+![Network](tp9/capturas/network.png)
+
