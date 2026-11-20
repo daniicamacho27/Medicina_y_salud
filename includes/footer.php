@@ -2,7 +2,7 @@
   <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2 text-center text-md-start">
     <a class="navbar-brand mb-0" href="<?= $ruta_base; ?>index.php">MedSalud</a>
     <span> Medicina y salud · Autora: Daniela Luz Belén Camacho</span>
-    <a href="<?= $ruta_base; ?>admin/index.php">Administración</a>
+    <a href="<?= $ruta_base; ?>articulos.php">Administración</a>
     <span>&copy; 2026</span>
   </div>
 </footer>
