@@ -1,0 +1,6 @@
+.git
+laravel-medsalud/vendor
+laravel-medsalud/.env
+laravel-medsalud/node_modules
+Capturas
+**/capturas

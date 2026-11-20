@@ -1,9 +1,9 @@
 <?php
 // Conexión PDO a la base "medsalud" (TP6). Se incluye con require_once.
-$host    = 'localhost';
-$db      = 'medsalud';
-$user    = 'root';
-$pass    = '';
+$host    = getenv('DB_HOST') ?: 'localhost';
+$db      = getenv('DB_NAME') ?: 'medsalud';
+$user    = getenv('DB_USER') ?: 'root';
+$pass    = getenv('DB_PASS') !== false ? getenv('DB_PASS') : '';
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";
