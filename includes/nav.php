@@ -16,6 +16,7 @@ $menu = [
     'mapa-del-sitio.php'         => 'Mapa del sitio',
     'clase5/contacto.php'        => 'Contacto',
     'clase5/buscar.php'          => 'Buscar',
+    'buscador.php'               => 'Buscador en vivo',
 ];
 ?>
 <header class="navbar-medsalud">
