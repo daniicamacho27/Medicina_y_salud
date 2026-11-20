@@ -42,6 +42,7 @@ try {
         // Se escapan % y _ para que se busquen como texto literal
         $like = '%' . addcslashes(mb_strtolower($q, 'UTF-8'), '%_\\') . '%';
         $sql .= " AND (LOWER(a.titulo) LIKE :q1 OR LOWER(a.resumen) LIKE :q2)";
+        $params[':q1'] = $like;
         $params[':q2'] = $like;
     }
     if ($categoria !== '') {
