@@ -298,3 +298,37 @@ Buscador de artículos en vivo: consulta a la base de datos con **Fetch API** y 
 **Pestaña Network (petición fetch, estado 200)**
 ![Network](tp9/capturas/network.png)
 
+## TP N° 10 — Refactorización a MVC e implementación con framework
+
+### Parte A: MVC nativo (PHP puro)
+
+Se refactorizó el CRUD de artículos en `app/` y se accede por `articulos.php?accion=listar` (solo rol `admin`).
+
+| Archivo | Responsabilidad |
+|---|---|
+| `app/Models/ArticuloModel.php` | Consultas SQL con PDO y prepared statements |
+| `app/Controllers/ArticuloController.php` | Recibe la solicitud, valida y elige la vista |
+| `app/Views/articulos/` | Marcado HTML (listado y formulario) |
+| `articulos.php` | Front controller |
+
+![Estructura](tp10/capturas/A1-estructura.png)
+![Listado](tp10/capturas/A2-listado.png)
+![Validación](tp10/capturas/A3-crear.png)
+![Éxito](tp10/capturas/A4-exito.png)
+
+### Parte B: módulo en Laravel
+
+Proyecto en `laravel-medsalud/`, conectado a la misma base `medsalud`. Módulo de artículos publicados.
+
+| Elemento | Archivo |
+|---|---|
+| Ruta | `routes/web.php` (`GET /articulos`) |
+| Controlador | `app/Http/Controllers/ArticuloController.php` |
+| Modelos (Eloquent) | `app/Models/Articulo.php`, `Categoria.php`, `EstadoArticulo.php` |
+| Vista (Blade) | `resources/views/articulos/index.blade.php` |
+
+Para ejecutarlo: `cd laravel-medsalud`, `composer install`, copiar `.env.example` como `.env`, completar los datos de la base, `php artisan key:generate` y `php artisan serve`. Después, abrir `http://127.0.0.1:8000/articulos`.
+
+![Estructura Laravel](tp10/capturas/B1-estructura.png)
+![Rutas](tp10/capturas/B2-rutas.png)
+![Módulo](tp10/capturas/B3-modulo.png)
